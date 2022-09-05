@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Sign Up</h1>
+                    <h6>Register</h6>
+                </div>
+                <form action="">
+                    <form #frmLogin="ngForm" (submit)="onSubmit(frmLogin)">
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" name="fullname" id="fullname" [(ngModel)]="Users.fullname">
+                          </div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Name</label>
+                            <input type="text" class="form-control" name="username" id="username" [(ngModel)]="Users.username">
+                          </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" id="password" [(ngModel)]="Users.password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" name="address" class="form-control" id="address" [(ngModel)]="Users.address">
+                        </div>
+                        <div class="mb-3">
+                          <label for="email" class="form-label">Email address</label>
+                          <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" [(ngModel)]="Users.email">
+                          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                     
+                        <button type="submit" class="btn btn-primary mb-2">Sign Up</button>
+                      </form>
+                      <a [routerLink]="['/auth/login']" style="color:#fff;">Click to Login</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .card{
+        border:none;
+        width:500px;
+        padding:40px;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,91,90,1) 35%, rgba(0,212,255,1) 100%);
+    }
+    .card h1,h6{
+        color: #fff;
+    }
+    label{
+        color: #fff;
+    }
+</style>

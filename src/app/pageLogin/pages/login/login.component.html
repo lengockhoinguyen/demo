@@ -1,0 +1,51 @@
+<body>
+    <img src="../../../assets/img/bgcolor.jpg" class="hide_img">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="text-center">
+                        <h1>Login</h1>
+                        <h6>Please enter email & password</h6>
+                    </div>             
+                    <form #frmLogin="ngForm" (submit)="onSubmit(frmLogin)">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">User Name</label>
+                            <input type="name" name="username" class="form-control" id="username" [(ngModel)]="Users.username" placeholder="Enter User">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" id="password" [(ngModel)]="Users.password" placeholder="Enter password">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">LogIn</button>
+                    </form>
+                      <a [routerLink]="['/auth/register']" style="color:#fff;">Register now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+</body>
+<style>
+    .hide_img{
+        width: 100%;
+    }
+    .card{
+        border:none;
+        width:500px;
+        padding:40px;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: hsla(205,46%,30%,1);
+        background-color: linear-gradient(90deg,hsla(205,46%,30%,1) 0%,hsla(260,29%,36%,1) 100%);
+    }
+    .card h1,h6{
+        color: #fff;
+    }
+    label{
+        color: #fff;
+    }
+</style>

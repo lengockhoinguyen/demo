@@ -1,0 +1,38 @@
+<style>
+     #nav{
+      color: #fff;
+      background-color: rgb(235, 88, 88);
+      height: 50px  ;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      margin-bottom: 50px;
+    }
+    #nav .nav-header{
+      padding:0px;
+    }
+    #nav .nav-header li{
+      display: inline-block;
+      line-height: 50px ;
+      padding: 0px 10px;
+      cursor: pointer;
+    }
+    #nav .nav-headright{
+      float: right;
+    } 
+    #nav .nav-header a{
+        color: #fff;
+    }
+    #nav .nav-header li:hover{
+      background-color: #ccc;
+      color:#000;
+    }
+   
+</style>
+<div id="nav">
+    <ul class="nav-header">
+      <li><i class="bi bi-box"></i> <a [routerLink]="['/admin/product']" style="text-decoration: none;"> Product Page</a> </li>
+      <li><i class="bi bi-receipt"></i> <a [routerLink]="['/admin/bill']" style="text-decoration: none;"> Bill Page</a></li>
+      <li><i class="bi bi-person-square"></i> <a [routerLink]="['/admin/user']" style="text-decoration: none;"> User Page</a></li>
+      <li class="nav-headright"><i class="bi bi-arrow-right-circle-fill"></i> <a [routerLink]="['/clients']" style="text-decoration: none;"> Back to Clients</a></li>
+    </ul>
+</div>
+<router-outlet></router-outlet>

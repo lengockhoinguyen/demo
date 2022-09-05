@@ -1,0 +1,80 @@
+<style>
+    .admin-header{
+      display: flex;
+      align-items: center;
+     
+    }
+    .admin-header button{
+      flex: 1;
+      top:0;
+      left: 0;
+      right: 0;
+    }
+    .admin-header h1{
+      flex:4
+    }
+  </style>
+  <div class="admin-header">
+    <h1>Danh sách hóa đơn</h1>
+  </div>
+  <!-- Modal -->
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>UserId</th>
+            <th>Thông tin người dùng</th>
+            <th>số lượng sản phẩm</th>
+            <th>Tổng tiền</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of arrBill;let i = index">
+            <th>{{item.inforUsers.id}}</th>
+            <td>{{item.inforUsers.fullname}}</td>
+            <td>{{item.cart.length}}</td>
+            <td><span class="text-danger">{{item.totalBill | number}} d</span></td>
+            <td><button type="submit" class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="xemchitiethd(i)">Xem chi tiet</button> </td>
+            <td><button type="submit" class="btn btn-danger" (click)="deleteItemInBill(i)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá tiền</th>
+                <th>Số lượng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of arrBill[indexBill].cart;let i = index">
+                <th>{{item.id}}</th>
+                <td><img [src]="item.img" style="width:40%;" alt=""></td>
+                <td>{{item.name}}</td>
+                <td><span class="text-danger">{{item.price | number}} d</span></td>
+                <td>{{item.inCart}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

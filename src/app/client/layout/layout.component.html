@@ -1,0 +1,509 @@
+<style>
+    #first-content{
+      display: flex;
+      justify-content: center;
+      background-color:rgb(51,55,69);
+      align-items: center;
+      height: 30px;
+      color: #fff;
+    }
+    #second-content{
+      display: flex;
+      justify-content: center;
+      background-color:rgb(51,55,69);
+      align-items: center;
+      height: 30px;
+      color: #fff;
+    }
+    #nav{
+      color: #fff;
+      background-color: rgb(235, 88, 88);
+      height: 35px  ;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    #nav .nav-header{
+      padding:0px;
+    }
+    #nav .nav-header li{
+      display: inline-block;
+      line-height: 35px ;
+      padding: 0px 10px;
+      cursor: pointer;
+    }
+    #nav .nav-headright{
+      float: right;
+    }
+    #nav .nav-header li:hover,#menu .menu-icon li:hover{
+      background-color: #ccc;
+      color:#000;
+    }
+    #third-content{
+      cursor: pointer;
+      color:#fff;
+      background-color: rgb(51,55,69);
+      height: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #third-content .logo-content img{
+      height: 80px;
+      display: inline-block;
+      border-radius: 100%;
+      margin: 10px 10px;
+    }
+    #third-content .logo-content h3{
+      display: inline-block;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 30px;
+    }
+    #third-content .search-nav{
+      color: #fff;
+      background-color: transparent;
+      width: 400px;
+      height: 40px;
+      padding-left:20px;
+    }
+    #third-content .cart{
+      color: #fff;
+      background-color: transparent;
+      height: 40px;
+      padding-left:20px;
+      margin-right: 10px;
+    }
+    #menu{
+      background-color: rgb(51,55,69);
+      height: 50px;
+      color: #fff;
+      display: flex;
+    }
+    #menu .menu-list,#menu .menu-icon{
+      display: inline-block;
+      padding: 0;
+    }
+    #menu .menu-list>li{
+      position: relative;
+      border: 1px dotted #ccc;
+      display: inline-block;
+      padding: 12px 16px;
+    }
+    #menu .menu-icon li{
+      border: 1px dotted #ccc;
+      display: inline-block;
+      padding: 12px 16px;
+      /* border-bottom: none*/
+  
+    }
+    #menu .menu-list a{
+      text-decoration: none;
+    }
+    #menu .menu-list li a{
+      color: #fff;
+   }
+    #menu .menu-list li:hover{
+    background-color:#ccc;
+    color: #000;
+    }
+    #menu .menu-list li:hover a{
+    color:#000;
+    }
+    #menu .hidemenu{
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      top:50px;
+      list-style: none;
+      left: 0;
+      min-width: 160px;
+      box-shadow: 2px 2px 10px 1px rgba(204, 204, 204,1);
+      margin: 0px;
+      padding:0px;
+    }
+    #menu .hidemenu li{
+      padding: 12px;
+    }
+    #menu li:hover .hidemenu{
+      display: block;
+    }
+    #menu .hidemenu li:hover{
+      background-color: rgb(235, 88, 88);
+      
+    }
+    #menu .hidemenu li:hover a{
+      color: #fff;
+    }
+    #menu .space{
+      flex: 1;
+      border: 1px dotted #ccc;
+      /* border-bottom: none; */
+    }
+    #last-content{
+      display: flex;
+        justify-content: center;
+      background-color:rgb(51,55,69);
+      height: 30px;
+      color: #fff;
+    }
+    #last-content h6{
+      line-height: 30px;
+    }
+    #img-baner{
+      display: flex;
+      margin-top: 20px;
+    }
+    #img-baner .myimg{
+      max-width: 100%;
+      max-height: 398px;
+      object-fit: cover;
+    }
+    #img-baner .baner-content{
+      flex: 1;
+    }
+    #icon-list{
+      display: flex;
+      margin-top: 20px;
+      cursor: pointer;
+      text-align: center;
+    }
+    #icon-list .icon-baner a{
+      text-decoration: none;
+      color: red;
+    }
+    #content-size{
+      display: flex;
+      margin: 14px 0px;
+    }
+    #content-size .content-item h3{
+      margin: 10px 10px;
+      font-size:18px;
+    }
+    #content-size .content-item p{
+      margin: 10px 10px;
+      font-size: 14px;
+      text-align: justify;
+      color: rgb(95, 104, 116);
+      font-weight: bold;
+    }
+    #content-size .content-item a{
+      text-decoration: none;
+      color: rgb(235,88,88);
+    }
+    .modal-dialog {
+    width: 1000px;
+    height:600px !important;
+    }
+   
+</style>
+ 
+  <!--Header-->
+  <div id="header">
+      <div id="first-content">
+        <h6>Inbox NguyenStore <a href=""> nhận ngay KM 20%</a></h6>
+      </div>
+      <div id="second-content">
+        <h6>Hàng ngàn mã FREESHIP tại NguyenStore. <a href="">Xem ngay!</a> </h6>
+      </div>
+      <div id="nav" *ngIf="UserLogin == null">
+          <ul class="nav-header">
+            <li><a href=""></a><i class="bi bi-telephone"></i> 076 8872 361</li>
+            <li><a href=""></a><i class="bi bi-chat"></i> Tư Vấn Online</li>
+            <li><a href=""></a><i class="bi bi-question-circle"></i> Câu Hỏi Thường Gặp</li>
+            <li class="nav-headright"><i class="bi bi-person-plus"></i> <a [routerLink]="['/auth/register']" style="color: #fff;text-decoration: none;">Đăng kí</a> </li>
+            <li class="nav-headright"><i class="bi bi-person-circle"></i> <a [routerLink]="['/auth/login']" style="color: #fff;text-decoration: none;">Đăng nhập</a></li>
+          </ul>
+      </div>
+      <div id="nav" *ngIf="UserLogin != null">
+        <ul class="nav-header">
+          <li><a href=""></a><i class="bi bi-telephone"></i> 076 8872 361</li>
+          <li><a href=""></a><i class="bi bi-chat"></i> Tư Vấn Online</li>
+          <li><a href=""></a><i class="bi bi-question-circle"></i> Câu Hỏi Thường Gặp</li>
+          <li class="nav-headright"><a style="color: #fff;text-decoration: none;" (click)="logOut()">LogOut</a></li>
+          <li class="nav-headright"> <a href="" style="color: #fff;text-decoration: none;" [routerLink]="['/admin']"><i class="bi bi-person-circle"></i> {{UserLogin.username}}</a></li>
+        </ul>
+    </div>
+      <div id="third-content">
+        <div class="logo-content">
+          <img src="assets/img/hatlogo.jpg" alt="">
+          <h3>NguyenStore</h3>
+        </div>
+          <div>
+            <!-- <input type="text" class="form-control search-nav rounded-pill" placeholder="search...." 
+            aria-label="Username" aria-describedby="basic-addon1"> -->
+          </div>
+          <div>
+            <button type="button" class="cart rounded-pill btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <a><span style="float:right;margin-right: 10px;">Giỏ hàng <i class="bi bi-cart2"></i></span></a>
+            </button>
+          </div>
+      </div>
+      <div id="menu">
+        <ul class="menu-list">
+          <li><i class="bi bi-house"></i></li>
+          <li><a href="">Nón Bảo Hiểm</a>
+            <div class="menu-list-child">
+               <ul class="hidemenu">
+                <li><a href="">Fullface</a></li>
+                <li><a href="">nón cào cào</a></li>
+                <li><a href="">nón 2 kính</a></li>
+                <li><a href="">phụ kiện nón</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="">Nón Lưỡi Trai</a>
+            <div class="menu-list-child">
+              <ul class="hidemenu">
+               <li><a href="">Fullface</a></li>
+               <li><a href="">nón cào cào</a></li>
+               <li><a href="">nón 2 kính</a></li>
+               <li><a href="">phụ kiện nón</a></li>
+             </ul>
+           </div>
+          </li>
+          <li><a href="">Áo Khoác Giáp</a>
+            <div class="menu-list-child">
+              <ul class="hidemenu">
+               <li><a href="">Áo LS2</a></li>
+               <li><a href="">Áo Komine</a></li>
+               <li><a href="">Áo Honda</a></li>
+               <li><a href="">Áo Taichi</a></li>
+             </ul>
+           </div>
+          </li>
+          <li><a href="">Nón Couple</a>
+            <div class="menu-list-child">
+              <ul class="hidemenu">
+               <li><a href="">Fullface</a></li>
+               <li><a href="">nón cào cào</a></li>
+               <li><a href="">nón 2 kính</a></li>
+               <li><a href="">phụ kiện nón</a></li>
+             </ul>
+           </div>
+          </li>
+          <li><a href="">Bao tay</a>
+            <div class="menu-list-child">
+              <ul class="hidemenu">
+               <li><a href="">Fullface</a></li>
+               <li><a href="">nón cào cào</a></li>
+               <li><a href="">nón 2 kính</a></li>
+               <li><a href="">phụ kiện nón</a></li>
+             </ul>
+           </div>
+          </li>
+          <li><a href="">Đồ Đi Phượt</a>
+            <div class="menu-list-child">
+              <ul class="hidemenu">
+               <li><a href="">bó gối-cù chõ</a></li>
+               <li><a href="">Áo chống nắng</a></li>
+               <li><a href="">Áo mưa bộ</a></li>
+               <li><a href="">phụ kiện nón</a></li>
+             </ul>
+           </div>
+          </li> 
+          <li><a href="">Khuyến mãi</a></li>
+        </ul>
+        <div class="space"></div>
+        <ul class="menu-icon">
+          <li><i class="bi bi-facebook"></i></li>
+          <li><i class="bi bi-twitter"></i></li>
+          <li><i class="bi bi-instagram"></i></li>
+        </ul>
+      </div>
+      <div id="last-content">
+        <h6>NguyenStore - Nơi bán nón uy tín , mọi mặt hàng đều được bán với giá cả hợp lý cho mọi người dùng.</h6>
+      </div>
+  </div>
+
+  <!--Carousel-->
+  <div id="img-baner">
+      <img src="../../../assets/img/imgbaner1.jpg" alt="" class="myimg">
+      <div class="baner-cotent">
+        <img src="../../../assets/img/logobaner/tragop.jpg" alt="" class="w-100">
+        <img src="../../../assets/img/logobaner/freeship.jpg" alt="" class="w-100">
+        <img src="../../../assets/img/logobaner/giamgia.jpg" alt="" class="w-100">
+        <img src="../../../assets/img/logobaner/baohanh.jpg" alt="" class="w-100">
+
+      </div>    
+  </div>
+
+  <!--List icon-->
+  <div id="icon-list" >
+    <div class="icon-baner" style="margin-right: 20px;">
+      <img src="../../../assets/img/logobaner/logo1.jpg" alt="" style="width:110px;">
+      <a href="">Fullface</a>
+    </div>
+    <div class="icon-baner" style="margin-right: 20px;">
+      <img src="../../../assets/img/logobaner/logo2.jpg" alt="" style="width:110px;">
+      <a href="">nón 3/4</a>
+    </div>
+    <div class="icon-baner" style="margin-right: 20px;">
+      <img src="../../../assets/img/logobaner/logo3.jpg" alt="" style="width:110px;">
+      <a href="">giá rẻ</a>
+    </div>
+    <div class="icon-baner" style="margin-right: 20px;">
+      <img src="../../../assets/img/logobaner/logo4.jpg" alt="" style="width:110px;">
+      <a href="">có 2 kính</a>
+    </div>
+    <div class="icon-baner" style="margin-right: 20px;">
+      <img src="../../../assets/img/logobaner/logo5.jpg" alt="" style="width:110px;">
+      <a href="">phụ kiện mũ</a>
+    </div>
+    <div class="icon-baner" style="margin-right: 20px;">
+      <img src="../../../assets/img/logobaner/logo6.jpg" alt="" style="width:110px;">
+      <a href="">găng tay</a>
+    </div>
+    <div class="icon-baner" style="margin-right: 20px;">
+      <img src="../../../assets/img/logobaner/logo7.jpg" alt="" style="width:110px;">
+      <a href="">áo mưa bộ</a>
+    </div>
+    <div class="icon-baner" style="margin-right: 20px;">
+      <img src="../../../assets/img/logobaner/logo8.jpg" alt="" style="width:110px;">
+      <a href="">áo khoác giáp</a>
+    </div>
+    <div class="icon-baner" style="margin-right: 20px;">
+      <img src="../../../assets/img/logobaner/logo9.jpg" alt="" style="width:110px;">
+      <a href="">thùng givi</a>
+    </div>
+    <div class="icon-baner" style="margin-right: 20px;">
+      <img src="../../../assets/img/logobaner/logo10.jpg" alt="" style="width:110px;">
+      <a href="">đồ phượt</a>
+    </div>
+    
+  </div>
+
+  <!--Dòng chữ chạy-->
+  <div class="text-white mt-2">
+    <marquee behavior="scroll" direction="left"  style="background-color: rgb(238, 99, 99)" >Hân hạnh được phục vụ quý khách </marquee>
+  </div>
+
+  <!--Hiển thị sản phẩm-->
+  <div class="row" style="padding:20px;">
+      <router-outlet></router-outlet>
+  </div>
+  
+  <!--Content-size-->
+  <div id="content-size">
+    <div class="content-item">
+        <h3 class="content-heading">Shop Tài Đạt bán nón fullface, mũ bảo hiểm chính hãng</h3 >
+        <p>Bảo hộ xe máy Tài Đạt là chuỗi cửa hàng bán mũ bảo hiểm, nón fullface, mũ 3/4 chính hãng, chất lượng an toàn, đạt chuẩn 
+          Việt Nam và quốc tế (DOT, ECE). <a href="">Mũ fullface đa dạng mẫu mã</a> , <a href="">nón 3/4 thời trang</a>, an toàn; được nhập khẩu từ các thương hiệu
+          nổi tiếng: <a href="">HJC, LS2, KYT, Yohe, Avex, Zeus, Bulldog</a>.</p>
+        <h3 class="content-heading">Uy tín hơn 8 năm kinh doanh đồ bảo hộ đi xe máy, PKL</h3 >
+        <p>Nếu bạn đang tìm kiếm một trang web để mua đồ bảo hộ trực tuyến thì nontaidat.vn là một sự lựa chọn tuyệt vời dành cho bạn.
+           Shop nón Tài Đạt chuyên bán đồ bảo hộ cơ thể như <a href="">găng tay</a> , bó gối, <a href="">áo khoác giáp Komine, LS2</a> và nhiều thương hiệu nổi bật khác
+          với giá cạnh tranh cùng <a href="">nhiều khuyến mãi hấp dẫn.</a></p>
+        <h3 class="content-heading">Mua online đồ phượt đơn giản, nhanh chóng và an toàn</h3 >
+        <p>Mua hàng ở shop Tài Đạt luôn là một trải nghiệm ấn tượng. Dù bạn đang có nhu cầu mua bất kỳ sản phẩm <a href=""> đồ phượt, phụ kiện 
+          xe máy</a> thì Tài Đạt cũng sẽ đảm bảo cung cấp cho bạn những sản phẩm ưng ý. Hiện tại, cửa hàng Tài Đạt hỗ trợ lắp miễn phí 
+          các dòng <a href=""> baga Givi, thùng Givi và giá đỡ điện thoại.</a> Ngoài ra, Tài Đạt còn bán nhớt Valvoline chính hãng cho anh em cần dùng
+          nhớt xịn nhập khẩu cho xe PKL. Là kênh bán hàng uy tín, Tài Đạt luôn cam kết mang lại cho khách hàng những trải nghiệm mua
+          sắm online giá rẻ và tin cậy. Mọi thông tin về người mua đều được bảo mật tuyệt đối. Các hoạt động giao dịch thanh toán 
+          tại Tài Đạt luôn được đảm bảo diễn ra nhanh chóng, an toàn. Tài Đạt luôn cam kết mọi sản phẩm trên Tài Đạt đều là những sản 
+          phẩm chính hãng, đầy đủ tem nhãn, bảo hành từ hãng phân phối.</p>
+          
+          <p style="color:black;">
+            Để chuyến đi dài ngày bình an và thoải mái, hãy ghé shop Tài Đạt để mua sắm thoải mái, freeship online, đổi trả & bảo hành chính hãng!
+          </p>
+        </div>
+  </div>
+
+  <!--footer-->
+  <div id="footer">
+        <!-- Remove the container if you want to extend the Footer to full width. -->
+
+    <footer class="text-white text-center text-lg-start bg-dark">
+      <!-- Grid container -->
+      <div class="footer-item p-4">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-3 p-3">
+            <h5 class="text-uppercase mb-4">Các bài viết nổi bậc</h5>
+              <ul style="color:rgb(235, 88, 88)">
+                <li>Top 10 nón LS2 đi motor HOT nhất</li>
+                <li>Vì sao mũ Yohe được ưa chuộng tại Việt Nam?</li>
+                <li>Givi giới thiệu Khung baga Remove-X mới siêu đẹp</li>
+                <li>Dịch vụ giặt mũ bảo hiểm fullface, nón 3/4</li>
+                <li>Nón sợi carbon làm như thế nào? Cách làm mũ bảo hiểm Carbon</li>
+                <li>Tại sao nên lắp Thùng giữa GIVI?</li>
+                <li>Top 7 nón bảo hiểm Yohe đi phượt chất lượng</li>
+                <li>Tiêu chuẩn ECE là gì? Yêu cầu đạt chuẩn ECE 22.05</li>
+              </ul>
+          </div>
+          <!--Grid column-->
+        
+          <!--Grid column-->
+          <div class="col-lg-3 p-3">
+            <h5 class="text-uppercase mb-4 pb-1">Search something</h5>
+  
+            <div class="form-outline form-white mb-4">
+              <input type="text" id="formControlLg" class="form-control form-control-lg" placeholder="search..."/>
+              
+            </div>
+  
+            <ul class="fa-ul" style="margin-left: 1.65em;">
+              <li class="mb-3">
+                <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Warsaw, 00-967, Poland</span>
+              </li>
+              <li class="mb-3">
+                <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">contact@example.com</span>
+              </li>
+              <li class="mb-3">
+                <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 48 234 567 88</span>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+          
+          <!--Grid column-->
+          <div class="col-lg-3 p-3">
+            <h5 class="text-uppercase mb-4">Các chi nhánh</h5>
+  
+          <h6>CHI NHÁNH QUẬN 1</h6>  
+            <p style="color:rgb(235, 88, 88)"> 22 Trần Khắc Chân, phường Tân Định
+            (Sau lưng chợ Tân Định)</p> 
+           <p>-Giờ mở cửa: 9h - 21h
+            Hotline: 0834 678 901</p> <br>
+           
+                       
+          <h6>CHI NHÁNH QUẬN 5</h6>  
+          <p style="color:rgb(235, 88, 88)">
+            297 Hồng Bàng, phường 11
+            (Đối diện trường THCS Hồng Bàng) 
+          </p>           
+            -Giờ mở cửa: 9h - 21h
+            Hotline: 0834 678 992
+          </div>
+          <!--Grid column-->
+
+           <!--Grid column-->
+            <div class="col-lg-3 p-3">
+              <h5 class="text-uppercase mb-4">Fanpage</h5>
+  
+                <a href="">
+                  <img src="../../../assets/img/fanpage.jpg" alt="" style="width:100%">
+                </a>
+               <div class="footer-item" style="margin-top: 20px;">
+                 <p>Cách mua hàng</p>
+                 <p>Chính sách vận chuyển</p>
+                 <p>Chính sách bảo hành</p>
+                 <p>Chính sách đổi trả hàng</p>
+                 <p style="color:rgb(235, 88, 88)">Tuyển dụng</p>
+                </div>
+            </div>
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Grid container -->
+  
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+  
+
+  </div>
+
+

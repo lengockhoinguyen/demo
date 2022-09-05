@@ -1,0 +1,130 @@
+<style>
+    .admin-header{
+      display: flex;
+      align-items: center;
+     
+    }
+    .admin-header button{
+      flex: 1;
+      top:0;
+      left: 0;
+      right: 0;
+    }
+    .admin-header h1{
+      flex:4
+    }
+  </style>
+  <div class="admin-header">
+    <h1>Danh sách tài khoản</h1>
+    <button class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#addProductModal">Thêm tài khoản</button>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #frmLogin="ngForm" (submit)="addUser(frmLogin)">
+            <div class="mb-3">
+              <label for="fullname" class="form-label">Fullname</label>
+              <input type="text" name="fullname" class="form-control" id="fullname" [(ngModel)]="User.fullname">      
+            </div>
+            <div class="mb-3">
+              <label for="username" class="form-label">username</label>
+              <input type="text" name="username" class="form-control" id="username" [(ngModel)]="User.username">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">password</label>
+              <input type="text" name="password" class="form-control" id="password" [(ngModel)]="User.password">
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">address</label>
+              <input type="text" name="address" class="form-control" id="address" [(ngModel)]="User.address">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">email</label>
+                <input type="text" name="email" class="form-control" id="email" [(ngModel)]="User.email">
+            </div>
+            <div class="mb-3">
+                <label for="checkAdmin" class="form-label">checkAdmin</label>
+                <input type="text" name="checkAdmin" class="form-control" id="checkAdmin" [(ngModel)]="User.checkAdmin">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Fullname</th>
+            <th>Username</th>
+            <th>password</th>
+            <th>address</th>
+            <th>email</th>
+            <th>CheckAdmin</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of arrUser;let i = index">
+            <td>{{item.id}}</td>
+            <td>{{item.fullname}}</td>
+            <td>{{item.username}}</td>
+            <td>{{item.password}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.checkAdmin}}</td>
+            <td><button type="submit" class="btn btn-danger" (click)="deleteItem(i)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="image" class="form-label">Img</label>
+              <input type="text" class="form-control" id="image" aria-describedby="emailHelp">      
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">name</label>
+              <input type="text" class="form-control" id="name">
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">price</label>
+              <input type="text" class="form-control" id="price">
+            </div>
+            <div class="mb-3">
+              <label for="qualtity" class="form-label">qualtity</label>
+              <input type="text" class="form-control" id="qualtity">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

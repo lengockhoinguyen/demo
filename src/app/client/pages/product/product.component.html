@@ -1,0 +1,127 @@
+
+<hr>
+<div id="content-pro">
+  <h2 class="text-danger">Tất cả sản phẩm</h2>
+  <input type="text" class="form-control search-nav rounded-pill" placeholder="search...." 
+  aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="Search">
+</div>
+<hr>
+<div class="row" >
+    <div class="col-lg-3" *ngFor="let item of products | filter:Search">
+        <div class="card" style="margin: 16px;">
+            <img [src]="item.img" class="w-100" alt="">
+            <div class="card-body">
+                <h5 class="card-title" style="text-align:center;">{{item.name}}</h5>
+                <p class="card-text">Loại : {{item.type}}</p>
+                <p class="card-text">Giá : <b class="text-danger">{{item.price}}đ</b></p>
+
+                <button class="btn btn-primary" (click)="Buy(item)">THÊM GIỎ HÀNG</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="lastcontent">
+  
+    <div class="box-heading">
+      <h4>XU HƯỚNG TÌM KIẾM</h4>
+    </div>
+    <div class="box-content"> 
+      <div class="img-content" style="width:230px;margin-right:10px ;">
+        <img src="../../../assets/img/logobaner/logo11.jpg" alt="">
+      </div>
+      <div class="img-content" style="width:230px;margin-right:20px">
+        <img src="../../../assets/img/logobaner/logo12.jpg" alt="">
+      </div>
+      <div class="img-content" style="width:230px;margin-right:20px">
+        <img src="../../../assets/img/logobaner/logo13.jpg" alt="">
+      </div>
+      <div class="img-content" style="width:230px;margin-right:20px">
+        <img src="../../../assets/img/logobaner/logo14.jpg" alt="">
+      </div>
+      <div class="img-content" style="width:230px;">
+        <img src="../../../assets/img/logobaner/logo15.jpg" alt="">
+      </div>
+    </div>
+</div>
+<!-- Modal Cart-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Giỏ Hàng</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Ảnh</th>
+              <th>Tên sp</th>
+              <th>Giá</th>
+              <th>Số lượng</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cart; let i = index">
+              <th>{{i+1}}</th>
+              <td><img [src]="item.img" alt=""></td>
+              <td>{{item.name}}</td>
+              <td>{{item.price}} d</td>
+              <td><button type="submit" class="btn btn-warning" (click)="btnDown(i)">-</button> {{item.inCart}} <button type="submit" class="btn btn-warning" (click)="btnRise(i)">+</button></td>
+              <td><button type="submit" class="btn btn-danger" (click)="deleteItem(i)">Delete</button></td>
+            </tr>
+            <tr>
+              <th colspan="2"></th>
+              <th colspan="4">Total : {{total}}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="checkOut()" *ngIf="cart.length>0">Thanh toán</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+    #content-pro{
+      display: flex;
+      position: relative;
+      justify-content: center;
+    }
+    #content-pro h2{
+      min-width: 800px;
+      text-align: center;
+    }
+    #content-pro .search-nav{
+      right: 0;
+      width: 300px;
+      position: absolute;
+    }
+    .card:hover{
+        box-shadow: 5px 5px 10px rgb(124, 114, 114);
+    }
+   
+    .card:hover{
+        box-shadow: 5px 5px 10px rgb(124, 114, 114);
+    }
+    #lastcontent{
+      margin: 10px 0px;
+    }
+    #lastcontent .box-content{
+      
+      display: flex;
+    }
+    #lastcontent .box-heading{
+      margin: 10px 0px;
+      background-color: rgb(211, 47, 47);
+      color: #fff;
+    }
+    #lastcontent .box-heading h4{
+      margin-left: 10px;
+    }
+</style>
